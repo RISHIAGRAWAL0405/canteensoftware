@@ -487,18 +487,7 @@ class CanteenApp {
         const upiId = '7597649518@ptyes';
         const payeeName = 'GenusCanteen';
         
-        // Create UPI intent URL
-        const upiUrl = `upi://pay?pa=${upiId}&pn=${payeeName}&am=${total}&cu=INR&tn=CanteenOrder`;
-        
-        // Try to open UPI app
-        const upiWindow = window.open(upiUrl, '_blank');
-        
-        // Fallback: Show UPI payment options if direct link doesn't work
-        setTimeout(() => {
-            if (!upiWindow || upiWindow.closed) {
-                this.showUpiPaymentOptions(total, upiId, payeeName);
-            }
-        }, 1000);
+        this.showUpiPaymentOptions(total, upiId, payeeName);
     }
     
     showUpiPaymentOptions(amount, upiId, payeeName) {
@@ -507,30 +496,35 @@ class CanteenApp {
         modal.innerHTML = `
             <div style="background:white;padding:2rem;border-radius:15px;max-width:400px;width:90%;text-align:center">
                 <h3 style="margin-bottom:1.5rem;color:#2d3748">💳 Pay ₹${amount}</h3>
-                <p style="margin-bottom:1rem;color:#4a5568">UPI ID: <strong>${upiId}</strong></p>
+                <p style="margin-bottom:0.5rem;color:#4a5568;font-size:0.9rem">Pay to UPI ID:</p>
+                <p style="margin-bottom:1.5rem;color:#2d3748;font-weight:700;font-size:1.1rem;background:#f7fafc;padding:0.8rem;border-radius:8px">${upiId}</p>
+                <p style="margin-bottom:1rem;color:#718096;font-size:0.85rem">Select your payment app:</p>
                 <div style="display:flex;flex-direction:column;gap:1rem">
-                    <a href="phonepe://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR" 
-                       style="background:#5f259f;color:white;padding:1rem;border-radius:8px;text-decoration:none;font-weight:600">
+                    <button onclick="app.openPaymentApp('phonepe', '${upiId}', '${payeeName}', ${amount})" 
+                       style="background:#5f259f;color:white;padding:1rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1rem">
                        📱 Pay with PhonePe
-                    </a>
-                    <a href="gpay://upi/pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR" 
-                       style="background:#2d7ff9;color:white;padding:1rem;border-radius:8px;text-decoration:none;font-weight:600">
+                    </button>
+                    <button onclick="app.openPaymentApp('gpay', '${upiId}', '${payeeName}', ${amount})" 
+                       style="background:#2d7ff9;color:white;padding:1rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1rem">
                        💳 Pay with Google Pay
-                    </a>
-                    <a href="paytmmp://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR" 
-                       style="background:#00b9f5;color:white;padding:1rem;border-radius:8px;text-decoration:none;font-weight:600">
+                    </button>
+                    <button onclick="app.openPaymentApp('paytm', '${upiId}', '${payeeName}', ${amount})" 
+                       style="background:#00b9f5;color:white;padding:1rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1rem">
                        💰 Pay with Paytm
-                    </a>
-                    <a href="upi://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR" 
-                       style="background:#34d399;color:white;padding:1rem;border-radius:8px;text-decoration:none;font-weight:600">
-                       🏦 Other UPI Apps
-                    </a>
+                    </button>
+                    <button onclick="app.openPaymentApp('amazon', '${upiId}', '${payeeName}', ${amount})" 
+                       style="background:#ff9900;color:white;padding:1rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1rem">
+                       🛒 Pay with Amazon Pay
+                    </button>
+                </div>
+                <div style="margin-top:1.5rem;padding:1rem;background:#fff3cd;border-radius:8px;border:1px solid #ffc107">
+                    <p style="margin:0;color:#856404;font-size:0.85rem">⚠️ If app doesn't open, copy UPI ID and pay manually</p>
                 </div>
                 <button onclick="this.parentElement.parentElement.remove()" 
-                        style="margin-top:1.5rem;padding:0.75rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600">
+                        style="margin-top:1rem;padding:0.75rem 1.5rem;background:#e53e3e;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600">
                     ❌ Cancel
                 </button>
-                <p style="margin-top:1rem;font-size:0.875rem;color:#718096">After payment, click below to confirm order</p>
+                <p style="margin-top:1rem;font-size:0.875rem;color:#718096">After completing payment, click below:</p>
                 <button id="confirm-after-payment" 
                         style="margin-top:0.5rem;padding:0.75rem 1.5rem;background:#48bb78;color:white;border:none;border-radius:8px;cursor:pointer;font-weight:600">
                     ✅ I've Completed Payment
@@ -543,6 +537,36 @@ class CanteenApp {
             modal.remove();
             await this.submitOrder();
         });
+    }
+    
+    openPaymentApp(app, upiId, payeeName, amount) {
+        let paymentUrl = '';
+        
+        switch(app) {
+            case 'phonepe':
+                paymentUrl = `phonepe://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR`;
+                break;
+            case 'gpay':
+                paymentUrl = `tez://upi/pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR`;
+                break;
+            case 'paytm':
+                paymentUrl = `paytmmp://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR`;
+                break;
+            case 'amazon':
+                paymentUrl = `upi://pay?pa=${upiId}&pn=${payeeName}&am=${amount}&cu=INR&mode=04`;
+                break;
+        }
+        
+        // Try to open the app
+        const link = document.createElement('a');
+        link.href = paymentUrl;
+        link.click();
+        
+        // Fallback: Show manual UPI ID if app doesn't open
+        setTimeout(() => {
+            const fallbackMsg = `If ${app} didn't open, please pay manually to UPI ID: ${upiId}`;
+            console.log(fallbackMsg);
+        }, 2000);
     }
     
     async submitOrder() {
