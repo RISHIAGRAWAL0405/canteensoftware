@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login - Genus Canteen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>🍽️ Genus Canteen</h1>
+            <p>Employee Login</p>
+            
+            <form id="employee-login-form" class="login-form">
+                <div class="form-group">
+                    <label for="employee-id">Employee ID:</label>
+                    <input type="text" id="employee-id" required placeholder="Enter your employee ID">
+                </div>
+                <div class="form-group">
+                    <label for="employee-name-login">Full Name:</label>
+                    <input type="text" id="employee-name-login" required placeholder="Enter your full name">
+                </div>
+                <button type="submit" class="btn btn-primary">Login & Continue</button>
+                <div id="login-error" class="error-message"></div>
+            </form>
+            
+            <div class="demo-info">
+                <p>First time? Your profile will be created automatically.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: linear-gradient(135deg, #2d3748, #4a5568); color: white; text-align: center; padding: 1rem; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -4px 20px rgba(0,0,0,0.1);">
+        <p style="margin: 0; font-size: 0.95rem;">Developed with <span style="color: #fc8181; animation: heartbeat 1.5s infinite;">❤️</span> by <a href="https://www.linkedin.com/in/rishi-agrawal0405/" target="_blank" style="color: #63b3ed; text-decoration: none; font-weight: 600; transition: color 0.3s;">Rishi Agrawal</a></p>
+    </footer>
+    <style>
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+        footer a:hover { color: #90cdf4 !important; }
+    </style>
+
+    <script>
+        document.getElementById('employee-login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const employeeId = document.getElementById('employee-id').value.trim();
+            const employeeName = document.getElementById('employee-name-login').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            
+            if (!employeeId || !employeeName) {
+                errorDiv.textContent = 'Please fill in all fields';
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/employee/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ employeeId, employeeName })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    localStorage.setItem('employeeId', employeeId);
+                    localStorage.setItem('employeeName', employeeName);
+                    localStorage.setItem('employeeProfile', JSON.stringify(result.profile));
+                    window.location.href = '/order.html';
+                } else {
+                    errorDiv.textContent = result.message || 'Login failed';
+                }
+            } catch (error) {
+                errorDiv.textContent = 'Login failed. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

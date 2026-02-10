@@ -1,0 +1,13 @@
+[
+  {
+    "employeeId": "1234",
+    "employeeName": "Rishi Agrawal",
+    "savedAddress": {
+      "buildingId": 1,
+      "floorId": 2,
+      "deptId": 3,
+      "seatId": "A2-FIN-001"
+    },
+    "createdAt": "2026-02-06T09:20:04.219Z"
+  }
+]

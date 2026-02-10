@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ Genus Canteen - Premium Food Ordering</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🍽️</div>
+                <h1>Genus Canteen</h1>
+                <div class="tagline">Premium Food Delivery to Your Workspace</div>
+            </div>
+            <div class="header-user-section">
+                <span id="header-employee-info" class="user-info"></span>
+                <button id="view-profile" class="btn btn-secondary">My Profile</button>
+                <button id="track-orders-btn" class="btn btn-secondary">Track Orders</button>
+                <button id="logout-employee" class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Step 1: Location Selection -->
+            <section id="location-section" class="section active">
+                <div class="section-header">
+                    <div class="section-icon">📍</div>
+                    <h2>Select Your Location</h2>
+                    <p class="section-subtitle">Tell us where to deliver your delicious meal</p>
+                </div>
+                <div class="location-form">
+                    <div class="form-group">
+                        <label for="employee-name"><i class="fas fa-user"></i> Employee Name:</label>
+                        <input type="text" id="employee-name" placeholder="👤 Enter your full name" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="employee-id-display"><i class="fas fa-id-card"></i> Employee ID:</label>
+                        <input type="text" id="employee-id-display" placeholder="🎫 Employee ID" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="building"><i class="fas fa-building"></i> Building:</label>
+                        <select id="building" required>
+                            <option value="">🏢 Select Building</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="floor"><i class="fas fa-layer-group"></i> Floor:</label>
+                        <select id="floor" required disabled>
+                            <option value="">🏗️ Select Floor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="department"><i class="fas fa-users"></i> Department:</label>
+                        <select id="department" required disabled>
+                            <option value="">🏛️ Select Department</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="seat"><i class="fas fa-chair"></i> Seat:</label>
+                        <select id="seat" required disabled>
+                            <option value="">💺 Select Seat</option>
+                        </select>
+                    </div>
+                    <button id="next-to-menu" class="btn btn-primary" disabled>
+                        <i class="fas fa-arrow-right"></i> Next: View Menu 🍽️
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 2: Menu Selection -->
+            <section id="menu-section" class="section">
+                <div class="section-header">
+                    <div class="section-icon">🍽️</div>
+                    <h2>Our Delicious Menu</h2>
+                    <p class="section-subtitle">Fresh ingredients, amazing flavors, delivered to your desk</p>
+                </div>
+                <div class="selected-location">
+                    <div class="location-info">
+                        <div class="info-item">
+                            <i class="fas fa-user-circle"></i>
+                            <span><strong>Employee:</strong> <span id="employee-info"></span></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Delivering to:</strong> <span id="delivery-location"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu-container"></div>
+                <div class="cart">
+                    <div class="cart-header">
+                        <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+                        <div class="cart-badge" id="cart-count">0</div>
+                    </div>
+                    <div id="cart-items"></div>
+                    <div class="cart-total">
+                        <strong>Total: ₹<span id="total">0</span></strong>
+                    </div>
+                    <button id="place-order" class="btn btn-success" disabled>
+                        <i class="fas fa-credit-card"></i> Proceed to Payment 💳
+                    </button>
+                    <button id="back-to-location" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Location
+                    </button>
+                </div>
+            </section>
+
+            <!-- Step 3: Payment Options -->
+            <section id="payment-section" class="section">
+                <div class="section-header">
+                    <div class="section-icon">💳</div>
+                    <h2>Secure Payment</h2>
+                    <p class="section-subtitle">Choose your preferred payment method</p>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="payment-order-items"></div>
+                    <div class="payment-total">
+                        <strong>Total Amount: ₹<span id="payment-total">0</span></strong>
+                    </div>
+                </div>
+                <div class="payment-methods">
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="upi" required checked>
+                            <div class="payment-content">
+                                <div class="payment-icon">📱</div>
+                                <div class="payment-info">
+                                    <span class="payment-title">UPI Payment</span>
+                                    <span class="payment-desc">Pay to: 7597649518@ptyes</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="payment-buttons">
+                        <button id="confirm-payment" class="btn btn-success" disabled>
+                            <i class="fas fa-check-circle"></i> Confirm Payment ✅
+                        </button>
+                        <button id="back-to-menu" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Menu
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 4: Order Confirmation -->
+            <section id="confirmation-section" class="section">
+                <div class="success-animation">
+                    <div class="success-icon">✅</div>
+                    <h2>🎉 Order Confirmed!</h2>
+                    <p class="success-message">Your delicious meal is being prepared with love!</p>
+                </div>
+                <div id="order-details"></div>
+                <div class="confirmation-actions">
+                    <button id="new-order" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Place New Order 🍽️
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.open('admin-dashboard.html', '_blank')">
+                        <i class="fas fa-eye"></i> Track Order 📱
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer style="background: linear-gradient(135deg, #2d3748, #4a5568); color: white; text-align: center; padding: 1.5rem; margin-top: 2rem; box-shadow: 0 -4px 20px rgba(0,0,0,0.1);">
+        <p style="margin: 0; font-size: 1rem;">Developed with <span style="color: #fc8181; animation: heartbeat 1.5s infinite;">❤️</span> by <a href="https://www.linkedin.com/in/rishi-agrawal0405/" target="_blank" style="color: #63b3ed; text-decoration: none; font-weight: 600; transition: color 0.3s;">Rishi Agrawal</a></p>
+    </footer>
+    <style>
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+        footer a:hover { color: #90cdf4 !important; }
+    </style>
+
+    <script src="order-script.js"></script>
+</body>
+</html>

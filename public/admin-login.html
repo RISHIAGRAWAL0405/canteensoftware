@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Admin - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>🍽️ Canteen Admin</h1>
+            <p>Login to manage orders</p>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div id="error-message" class="error-message"></div>
+            </form>
+            
+            <div class="demo-credentials">
+                <p><strong>Demo Credentials:</strong></p>
+                <p>Username: <code>admin</code></p>
+                <p>Password: <code>canteen123</code></p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: linear-gradient(135deg, #2d3748, #4a5568); color: white; text-align: center; padding: 1rem; position: fixed; bottom: 0; width: 100%; box-shadow: 0 -4px 20px rgba(0,0,0,0.1);">
+        <p style="margin: 0; font-size: 0.95rem;">Developed with <span style="color: #fc8181; animation: heartbeat 1.5s infinite;">❤️</span> by <a href="https://www.linkedin.com/in/rishi-agrawal0405/" target="_blank" style="color: #63b3ed; text-decoration: none; font-weight: 600; transition: color 0.3s;">Rishi Agrawal</a></p>
+    </footer>
+    <style>
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+        footer a:hover { color: #90cdf4 !important; }
+    </style>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error-message');
+            
+            console.log('Attempting login with:', { username, password }); // Debug log
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                console.log('Response status:', response.status); // Debug log
+                const result = await response.json();
+                console.log('Response data:', result); // Debug log
+                
+                if (result.success) {
+                    localStorage.setItem('adminToken', result.token);
+                    window.location.href = '/admin-dashboard.html';
+                } else {
+                    errorDiv.textContent = result.message || 'Invalid credentials';
+                }
+            } catch (error) {
+                console.error('Login error:', error); // Debug log
+                errorDiv.textContent = 'Login failed. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

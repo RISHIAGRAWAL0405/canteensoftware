@@ -1,0 +1,155 @@
+[
+  {
+    "id": 1,
+    "name": "Building A",
+    "floors": [
+      {
+        "id": 1,
+        "name": "Floor 1",
+        "departments": [
+          {
+            "id": 1,
+            "name": "IT Department",
+            "seats": [
+              {"id": "A1-IT-001", "number": "001", "occupied": false},
+              {"id": "A1-IT-002", "number": "002", "occupied": false},
+              {"id": "A1-IT-003", "number": "003", "occupied": true},
+              {"id": "A1-IT-004", "number": "004", "occupied": false},
+              {"id": "A1-IT-005", "number": "005", "occupied": false},
+              {"id": "A1-IT-006", "number": "006", "occupied": true}
+            ]
+          },
+          {
+            "id": 2,
+            "name": "HR Department",
+            "seats": [
+              {"id": "A1-HR-001", "number": "001", "occupied": false},
+              {"id": "A1-HR-002", "number": "002", "occupied": false},
+              {"id": "A1-HR-003", "number": "003", "occupied": false},
+              {"id": "A1-HR-004", "number": "004", "occupied": true}
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Floor 2",
+        "departments": [
+          {
+            "id": 3,
+            "name": "Finance Department",
+            "seats": [
+              {"id": "A2-FIN-001", "number": "001", "occupied": false},
+              {"id": "A2-FIN-002", "number": "002", "occupied": true},
+              {"id": "A2-FIN-003", "number": "003", "occupied": false},
+              {"id": "A2-FIN-004", "number": "004", "occupied": false}
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Operations Department",
+            "seats": [
+              {"id": "A2-OPS-001", "number": "001", "occupied": false},
+              {"id": "A2-OPS-002", "number": "002", "occupied": false},
+              {"id": "A2-OPS-003", "number": "003", "occupied": true}
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Floor 3",
+        "departments": [
+          {
+            "id": 5,
+            "name": "Management",
+            "seats": [
+              {"id": "A3-MGT-001", "number": "001", "occupied": false},
+              {"id": "A3-MGT-002", "number": "002", "occupied": true},
+              {"id": "A3-MGT-003", "number": "003", "occupied": false}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Building B",
+    "floors": [
+      {
+        "id": 4,
+        "name": "Floor 1",
+        "departments": [
+          {
+            "id": 6,
+            "name": "Marketing Department",
+            "seats": [
+              {"id": "B1-MKT-001", "number": "001", "occupied": false},
+              {"id": "B1-MKT-002", "number": "002", "occupied": false},
+              {"id": "B1-MKT-003", "number": "003", "occupied": true},
+              {"id": "B1-MKT-004", "number": "004", "occupied": false}
+            ]
+          },
+          {
+            "id": 7,
+            "name": "Sales Department",
+            "seats": [
+              {"id": "B1-SAL-001", "number": "001", "occupied": false},
+              {"id": "B1-SAL-002", "number": "002", "occupied": false},
+              {"id": "B1-SAL-003", "number": "003", "occupied": false}
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Floor 2",
+        "departments": [
+          {
+            "id": 8,
+            "name": "Customer Support",
+            "seats": [
+              {"id": "B2-CS-001", "number": "001", "occupied": false},
+              {"id": "B2-CS-002", "number": "002", "occupied": true},
+              {"id": "B2-CS-003", "number": "003", "occupied": false},
+              {"id": "B2-CS-004", "number": "004", "occupied": false}
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Building C",
+    "floors": [
+      {
+        "id": 6,
+        "name": "Floor 1",
+        "departments": [
+          {
+            "id": 9,
+            "name": "Research & Development",
+            "seats": [
+              {"id": "C1-RD-001", "number": "001", "occupied": false},
+              {"id": "C1-RD-002", "number": "002", "occupied": false},
+              {"id": "C1-RD-003", "number": "003", "occupied": true},
+              {"id": "C1-RD-004", "number": "004", "occupied": false},
+              {"id": "C1-RD-005", "number": "005", "occupied": false}
+            ]
+          },
+          {
+            "id": 10,
+            "name": "Quality Assurance",
+            "seats": [
+              {"id": "C1-QA-001", "number": "001", "occupied": false},
+              {"id": "C1-QA-002", "number": "002", "occupied": false},
+              {"id": "C1-QA-003", "number": "003", "occupied": false}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

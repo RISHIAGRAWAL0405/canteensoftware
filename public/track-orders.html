@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track My Orders - Genus Canteen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🍽️ Genus Canteen</h1>
+        <p>Track Your Orders</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tracking-section section active">
+                <h2>My Orders</h2>
+                
+                <div class="employee-info-box">
+                    <p><strong>Employee:</strong> <span id="current-employee"></span></p>
+                    <button id="back-home" class="btn btn-secondary">Back to Home</button>
+                </div>
+
+                <div class="order-filters">
+                    <button class="filter-btn active" data-filter="all">All Orders</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="preparing">Preparing</button>
+                    <button class="filter-btn" data-filter="ready">Ready</button>
+                    <button class="filter-btn" data-filter="delivered">Delivered</button>
+                </div>
+
+                <div id="my-orders-container" class="my-orders-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="track-orders.js"></script>
+</body>
+</html>

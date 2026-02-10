@@ -1,0 +1,245 @@
+[
+  {
+    "id": 1,
+    "category": "Breakfast",
+    "items": [
+      {
+        "id": 101,
+        "name": "Pancakes",
+        "price": 299,
+        "description": "Fluffy pancakes served with maple syrup and butter",
+        "available": true
+      },
+      {
+        "id": 104,
+        "name": "Veggie Sandwich",
+        "price": 179,
+        "description": "Egg, cheese, and vegetables on toasted bread"
+      },
+      {
+        "id": 105,
+        "name": "French Toast",
+        "price": 249,
+        "description": "Golden French toast with cinnamon and syrup"
+      },
+      {
+        "id": 1770447039306,
+        "name": "kachori",
+        "description": "kjbvfcwhj",
+        "price": 15,
+        "available": true
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Lunch",
+    "items": [
+      {
+        "id": 201,
+        "name": "Vegetable Biryani",
+        "price": 349,
+        "description": "Aromatic basmati rice with mixed vegetables and spices"
+      },
+      {
+        "id": 202,
+        "name": "Paneer Salad",
+        "price": 299,
+        "description": "Fresh greens with grilled paneer and vinaigrette"
+      },
+      {
+        "id": 203,
+        "name": "Mixed Vegetable Curry",
+        "price": 249,
+        "description": "Seasonal vegetables in spicy curry sauce with rice"
+      },
+      {
+        "id": 204,
+        "name": "Veggie Club Sandwich",
+        "price": 279,
+        "description": "Triple-layer sandwich with cheese, vegetables, and spreads"
+      },
+      {
+        "id": 205,
+        "name": "Aloo Tikki Burger",
+        "price": 329,
+        "description": "Crispy potato patty burger with vegetables and fries"
+      },
+      {
+        "id": 206,
+        "name": "Pasta Alfredo",
+        "price": 319,
+        "description": "Creamy alfredo pasta with vegetables"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Dinner",
+    "items": [
+      {
+        "id": 301,
+        "name": "Paneer Tikka",
+        "price": 449,
+        "description": "Grilled paneer with vegetables and mint chutney"
+      },
+      {
+        "id": 302,
+        "name": "Dal Makhani",
+        "price": 399,
+        "description": "Creamy black lentils with butter and spices"
+      },
+      {
+        "id": 303,
+        "name": "Palak Paneer",
+        "price": 379,
+        "description": "Spinach curry with cottage cheese and basmati rice"
+      },
+      {
+        "id": 304,
+        "name": "Vegetarian Pizza",
+        "price": 359,
+        "description": "Wood-fired pizza with fresh vegetables and cheese"
+      },
+      {
+        "id": 305,
+        "name": "Rajma Curry",
+        "price": 429,
+        "description": "Kidney beans in aromatic spices with naan bread"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Snacks",
+    "items": [
+      {
+        "id": 401,
+        "name": "Samosas (3 pcs)",
+        "price": 89,
+        "description": "Crispy pastries filled with spiced potatoes"
+      },
+      {
+        "id": 402,
+        "name": "Paneer Pakoras",
+        "price": 159,
+        "description": "Crispy paneer fritters with mint chutney"
+      },
+      {
+        "id": 403,
+        "name": "Nachos",
+        "price": 129,
+        "description": "Tortilla chips with cheese, salsa, and guacamole"
+      },
+      {
+        "id": 404,
+        "name": "Spring Rolls (4 pcs)",
+        "price": 99,
+        "description": "Crispy vegetable spring rolls with sweet chili sauce"
+      },
+      {
+        "id": 405,
+        "name": "Garlic Bread",
+        "price": 79,
+        "description": "Toasted bread with garlic butter and herbs"
+      },
+      {
+        "id": 406,
+        "name": "Onion Rings",
+        "price": 89,
+        "description": "Golden crispy onion rings with dipping sauce"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Beverages",
+    "items": [
+      {
+        "id": 501,
+        "name": "Fresh Orange Juice",
+        "price": 79,
+        "description": "Freshly squeezed orange juice"
+      },
+      {
+        "id": 502,
+        "name": "Coffee",
+        "price": 49,
+        "description": "Hot brewed coffee - regular or decaf"
+      },
+      {
+        "id": 503,
+        "name": "Masala Tea",
+        "price": 39,
+        "description": "Traditional spiced tea with milk"
+      },
+      {
+        "id": 504,
+        "name": "Soft Drinks",
+        "price": 49,
+        "description": "Coke, Pepsi, Sprite, or Fanta"
+      },
+      {
+        "id": 505,
+        "name": "Iced Tea",
+        "price": 59,
+        "description": "Refreshing iced tea with lemon"
+      },
+      {
+        "id": 506,
+        "name": "Smoothie",
+        "price": 119,
+        "description": "Fresh fruit smoothie - mango, strawberry, or mixed berry"
+      },
+      {
+        "id": 507,
+        "name": "Lassi",
+        "price": 89,
+        "description": "Traditional yogurt drink - sweet or salted"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Desserts",
+    "items": [
+      {
+        "id": 601,
+        "name": "Chocolate Cake",
+        "price": 129,
+        "description": "Rich chocolate cake with chocolate frosting"
+      },
+      {
+        "id": 602,
+        "name": "Ice Cream Sundae",
+        "price": 99,
+        "description": "Vanilla ice cream with chocolate sauce and nuts"
+      },
+      {
+        "id": 603,
+        "name": "Gulab Jamun (2 pcs)",
+        "price": 89,
+        "description": "Traditional sweet dumplings in sugar syrup"
+      },
+      {
+        "id": 604,
+        "name": "Fresh Fruit Salad",
+        "price": 1000,
+        "description": "Seasonal fresh fruits with honey dressing",
+        "available": false
+      },
+      {
+        "id": 605,
+        "name": "Cheesecake",
+        "price": 149,
+        "description": "Creamy New York style cheesecake"
+      },
+      {
+        "id": 606,
+        "name": "Kulfi",
+        "price": 79,
+        "description": "Traditional Indian ice cream with pistachios"
+      }
+    ]
+  }
+]

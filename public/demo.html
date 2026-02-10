@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍽️ Genus Canteen - Enhanced Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .demo-showcase {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .showcase-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .showcase-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .showcase-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .showcase-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .demo-btn {
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .demo-btn.primary {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+        
+        .demo-btn.secondary {
+            background: linear-gradient(135deg, #f6ad55, #ed8936);
+            color: white;
+            box-shadow: 0 6px 20px rgba(246, 173, 85, 0.4);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .tech-stack {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .tech-stack h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .tech-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-showcase">
+        <div class="showcase-container">
+            <div class="showcase-header">
+                <h1>🍽️ Genus Canteen Enhanced</h1>
+                <p>Professional Food Ordering System with Modern UI/UX</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Modern Design</h3>
+                    <p>Beautiful gradients, smooth animations, and professional typography using Poppins font family for an elegant user experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>High-Quality Images</h3>
+                    <p>Each menu item features appetizing food photography from Unsplash to make the ordering experience more engaging and visual.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">😊</div>
+                    <h3>Emoji Integration</h3>
+                    <p>Thoughtful use of emojis throughout the interface to create a friendly, approachable, and fun ordering experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Fully responsive layout that works perfectly on desktop, tablet, and mobile devices with touch-friendly interactions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Notifications</h3>
+                    <p>Real-time feedback with animated notifications when items are added, removed, or updated in the shopping cart.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Smooth Animations</h3>
+                    <p>Micro-interactions and smooth transitions that provide visual feedback and enhance the overall user experience.</p>
+                </div>
+            </div>
+            
+            <div class="demo-buttons">
+                <a href="index.html" class="demo-btn primary">
+                    <i class="fas fa-shopping-cart"></i>
+                    Try Customer App
+                </a>
+                <a href="admin-dashboard.html" class="demo-btn secondary">
+                    <i class="fas fa-chart-bar"></i>
+                    View Admin Dashboard
+                </a>
+            </div>
+            
+            <div class="tech-stack">
+                <h3>🛠️ Enhanced with Modern Technologies</h3>
+                <div class="tech-list">
+                    <div class="tech-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3 + Animations</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript ES6+</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-images"></i>
+                        <span>Unsplash API</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-font"></i>
+                        <span>Google Fonts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
