@@ -76,6 +76,7 @@ class CanteenApp {
         await this.loadMenu();
         this.setupEventListeners();
         this.populateBuildings();
+        this.restoreSession();
     }
 
     async loadBuildings() {
@@ -220,6 +221,7 @@ class CanteenApp {
         this.saveSelectedLocation();
         this.displayMenu();
         this.showSection('menu-section');
+        this.saveSession();
         // Auto-scroll to menu section
         setTimeout(() => {
             document.getElementById('menu-section').scrollIntoView({
@@ -231,6 +233,7 @@ class CanteenApp {
 
     showLocationSection() {
         this.showSection('location-section');
+        this.saveSession();
     }
 
     saveSelectedLocation() {
@@ -331,6 +334,7 @@ class CanteenApp {
         }
 
         this.updateCartDisplay();
+        this.saveSession();
     }
 
     findMenuItem(itemId) {
@@ -382,6 +386,7 @@ class CanteenApp {
     showPaymentSection() {
         this.displayPaymentSummary();
         this.showSection('payment-section');
+        this.saveSession();
         // Auto-scroll to payment section
         setTimeout(() => {
             document.getElementById('payment-section').scrollIntoView({
@@ -495,6 +500,7 @@ class CanteenApp {
         document.getElementById('confirm-payment').disabled = true;
         this.onBuildingChange();
         this.showSection('location-section');
+        localStorage.removeItem('canteenSession');
     }
 
     showNotification(message) {
@@ -523,6 +529,80 @@ class CanteenApp {
             section.classList.remove('active');
         });
         document.getElementById(sectionId).classList.add('active');
+    }
+
+    saveSession() {
+        const session = {
+            cart: this.cart,
+            selectedLocation: this.selectedLocation,
+            currentSection: document.querySelector('.section.active').id,
+            formData: {
+                employeeName: document.getElementById('employee-name').value,
+                building: document.getElementById('building').value,
+                floor: document.getElementById('floor').value,
+                department: document.getElementById('department').value,
+                seat: document.getElementById('seat').value
+            },
+            paymentMethod: document.querySelector('input[name="payment"]:checked')?.value
+        };
+        localStorage.setItem('canteenSession', JSON.stringify(session));
+    }
+
+    restoreSession() {
+        const saved = localStorage.getItem('canteenSession');
+        if (!saved) return;
+
+        const session = JSON.parse(saved);
+        this.cart = session.cart || [];
+        this.selectedLocation = session.selectedLocation || {};
+
+        // Restore form data
+        if (session.formData.employeeName) {
+            document.getElementById('employee-name').value = session.formData.employeeName;
+        }
+        if (session.formData.building) {
+            document.getElementById('building').value = session.formData.building;
+            this.onBuildingChange();
+            setTimeout(() => {
+                if (session.formData.floor) {
+                    document.getElementById('floor').value = session.formData.floor;
+                    this.onFloorChange();
+                    setTimeout(() => {
+                        if (session.formData.department) {
+                            document.getElementById('department').value = session.formData.department;
+                            this.onDepartmentChange();
+                            setTimeout(() => {
+                                if (session.formData.seat) {
+                                    document.getElementById('seat').value = session.formData.seat;
+                                    this.updateNextButton();
+                                }
+                            }, 50);
+                        }
+                    }, 50);
+                }
+            }, 50);
+        }
+
+        // Restore section and display
+        if (session.currentSection === 'menu-section') {
+            this.displayMenu();
+            this.updateCartDisplay();
+            if (this.selectedLocation.employeeName) {
+                document.getElementById('employee-info').textContent = this.selectedLocation.employeeName;
+                document.getElementById('delivery-location').textContent = 
+                    `${this.selectedLocation.building}, ${this.selectedLocation.floor}, ${this.selectedLocation.department}, Seat ${this.selectedLocation.seat}`;
+            }
+            this.showSection('menu-section');
+        } else if (session.currentSection === 'payment-section') {
+            this.displayMenu();
+            this.updateCartDisplay();
+            this.displayPaymentSummary();
+            if (session.paymentMethod) {
+                document.querySelector(`input[name="payment"][value="${session.paymentMethod}"]`).checked = true;
+                this.updatePaymentButton();
+            }
+            this.showSection('payment-section');
+        }
     }
 }
 

@@ -9,6 +9,7 @@ const Employee = require('./models/Employee');
 const Order = require('./models/Order');
 const Menu = require('./models/Menu');
 const Building = require('./models/Building');
+// const open = require('open');
 
 const app = express();
 const server = http.createServer(app);
@@ -265,15 +266,28 @@ app.put('/api/orders/:id/status', async (req, res) => {
   }
 });
 
-// Serve demo page as default
+// // Serve demo page as default
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'employee-login.html'));
+// });
+
+// Redirect root to employee login page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'employee-login.html'));
+  res.redirect('/employee-login.html');
 });
 
-server.listen(PORT, () => {
-  console.log(`🍽️ Genus Canteen Server running on http://localhost:${PORT}`);
+
+server.listen(PORT, async () => {
+  const url = `http://localhost:${PORT}/employee-login.html`;
+
+  console.log(`🍽️ Genus Canteen Server running on ${url}`);
   console.log(`📊 Admin Dashboard: http://localhost:${PORT}/admin-login.html`);
+
+  const open = (await import('open')).default;
+  await open(url);
 });
+
+
 
 // WebSocket connection handling
 io.on('connection', (socket) => {
