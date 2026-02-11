@@ -150,7 +150,7 @@ class CanteenApp {
         document.getElementById('seat').addEventListener('change', () => this.onSeatChange());
         document.getElementById('next-to-menu').addEventListener('click', () => this.showMenuSection());
         document.getElementById('back-to-location').addEventListener('click', () => this.showLocationSection());
-        document.getElementById('place-order').addEventListener('click', () => this.showPaymentSection());
+        document.getElementById('view-cart').addEventListener('click', () => this.goToCart());
         document.getElementById('back-to-menu').addEventListener('click', () => this.showMenuSection());
         document.getElementById('confirm-payment').addEventListener('click', () => this.processPayment());
         document.getElementById('new-order').addEventListener('click', () => this.resetApp());
@@ -282,6 +282,12 @@ class CanteenApp {
         const nextBtn = document.getElementById('next-to-menu');
         const seatSelected = document.getElementById('seat').value;
         nextBtn.disabled = !seatSelected;
+    }
+
+    goToCart() {
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem('selectedLocation', JSON.stringify(this.selectedLocation));
+        window.location.href = '/cart.html';
     }
 
     async showMenuSection() {
@@ -443,7 +449,10 @@ class CanteenApp {
 
         const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         document.getElementById('total').textContent = total;
-        document.getElementById('place-order').disabled = this.cart.length === 0;
+        document.getElementById('view-cart').disabled = this.cart.length === 0;
+        
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem('selectedLocation', JSON.stringify(this.selectedLocation));
     }
 
     showPaymentSection() {

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 Cart - Genus Canteen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">🍽️</div>
+                <h1>Genus Canteen</h1>
+            </div>
+            <div class="header-user-section">
+                <span id="header-employee-info" class="user-info"></span>
+                <button id="back-to-menu" class="btn btn-secondary">← Back to Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="cart-page">
+                <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+                
+                <div class="cart-content">
+                    <div class="cart-items-section">
+                        <div id="cart-items-list"></div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span>₹<span id="subtotal">0</span></span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <strong>Total:</strong>
+                                <strong>₹<span id="total">0</span></strong>
+                            </div>
+                        </div>
+                        
+                        <div class="delivery-info">
+                            <h4>📍 Delivery Location</h4>
+                            <p id="delivery-location"></p>
+                        </div>
+
+                        <button id="checkout-btn" class="btn btn-success" disabled>
+                            <i class="fas fa-credit-card"></i> Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="payment-modal" class="modal">
+                <div class="modal-content">
+                    <h3>💳 Payment</h3>
+                    <div class="payment-summary">
+                        <h4>Order Items:</h4>
+                        <div id="payment-items"></div>
+                        <div class="payment-total">
+                            <strong>Total: ₹<span id="payment-total">0</span></strong>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <p>Pay to UPI ID: <strong>7597649518@ptyes</strong></p>
+                        <div class="payment-apps">
+                            <button onclick="cartApp.openPaymentApp('phonepe')" class="payment-app-btn phonepe">📱 PhonePe</button>
+                            <button onclick="cartApp.openPaymentApp('gpay')" class="payment-app-btn gpay">💳 Google Pay</button>
+                            <button onclick="cartApp.openPaymentApp('paytm')" class="payment-app-btn paytm">💰 Paytm</button>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="confirm-payment-btn" class="btn btn-success">✅ I've Completed Payment</button>
+                        <button id="cancel-payment-btn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: linear-gradient(135deg, #2d3748, #4a5568); color: white; text-align: center; padding: 1.5rem; margin-top: 2rem;">
+        <p style="margin: 0;">Developed with <span style="color: #fc8181;">❤️</span> by <a href="https://www.linkedin.com/in/rishi-agrawal0405/" target="_blank" style="color: #63b3ed; text-decoration: none; font-weight: 600;">Rishi Agrawal</a></p>
+    </footer>
+
+    <script src="cart-script.js"></script>
+</body>
+</html>
